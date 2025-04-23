@@ -1,2 +1,4 @@
 # ecommerce
-my first repo.
+my first repository.
+<br>
+author - omprakash 
