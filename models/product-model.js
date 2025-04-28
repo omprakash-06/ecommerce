@@ -15,7 +15,11 @@ const productSchema = mongoose.Schema({
     },
     bgcolor:String,
     panelcolor :String,
-    textcolor:String, 
+    textcolor:String,
+    quantity: {
+        type: Number,
+        default: 1
+      } 
 });
 
 module.exports = mongoose.model("product",productSchema);
