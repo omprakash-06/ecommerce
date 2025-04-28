@@ -8,7 +8,7 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("index", { error: req.flash("error"),user:req.user });
+  res.render("index", { error: req.flash("error"),user:req.user, success: req.flash("success"), });
 });
 
 router.get('/logout', (req, res) => {
