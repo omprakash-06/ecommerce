@@ -6,13 +6,14 @@ const { name } = require("ejs");
 
 router.post("/create", upload.single('image'), async (req, res) => {
     try {
-        let { name, email, price, discount, bgcolor, panelcolor, textcolor } = req.body;
+        let { name, email, price, discount, bgcolor, panelcolor, textcolor,fee } = req.body;
 
         let product = await productModel.create({
             image: req.file.buffer,
             name,
             email,
             price,
+            fee,
             discount,
             bgcolor,
             panelcolor,

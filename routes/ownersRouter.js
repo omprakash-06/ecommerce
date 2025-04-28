@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 router.get("/admin", function (req, res) {
-  res.render("createproducts"); // Render the product creation page
+  res.render("createproducts",{user:req.user}); // Render the product creation page
 });
 
 module.exports = router;
