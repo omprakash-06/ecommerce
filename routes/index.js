@@ -45,11 +45,32 @@ router.get("/addtocart/:id", isLoggedin, async (req, res) => {
         res.redirect("/shop");
     }
 });
+// view cart
 router.get("/cart", isLoggedin, async (req, res) => {
    let user = await userModel.findOne({ email: req.user.email }).populate("cart");
    res.render("cart",{user:req.user,user});
 });
 
+//increase product quantity
+router.get("/cart/increase/:id", isLoggedin, async (req, res) => {
+    let user = await userModel.findOne({ email: req.user.email }).populate("cart");
+    let product = user.cart.find((element) => element._id.toString() === req.params.id);
+    if(product){
+        product.quantity += 1 ;
+        await product.save(); // Save the updated quantity
+    }
+    res.redirect("/cart");
+ });
 
-
+ //decrease product quantity
+router.get("/cart/decrease/:id", isLoggedin, async (req, res) => {
+    let user = await userModel.findOne({ email: req.user.email }).populate("cart");
+    let product = user.cart.find((element) => element._id.toString() === req.params.id);
+    if(product){
+        
+        product.quantity = product.quantity > 1 ? product.quantity - 1 : 1;
+        await product.save(); // Save the updated quantity
+    }
+    res.redirect("/cart");
+ });
 module.exports = router;

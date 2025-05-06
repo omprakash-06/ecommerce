@@ -40,7 +40,7 @@
   <div class="w-[75%] flex flex-col gap-5 h-screen">
     <div class="flex flex-wrap gap-5">
       <% products.forEach((product) => { %>
-        <div class="w-60 bg-[<%= product.bgcolor %>] rounded-lg shadow-lg overflow-hidden">
+        <div class="w-60 bg-[<%= product.bgcolor %>] rounded-lg shadow-lg overflow-hidden ">
           <div class="w-full h-52 bg-[<%= product.panelcolor %>] text-[<%= product.textcolor %>]">
             <% if (product.image) { %>
               <img class="w-full h-full object-cover"
