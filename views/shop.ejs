@@ -25,9 +25,9 @@
       </form>
     </div>
     <div class="flex flex-col mt-20">
-      <a class="block w-fit mb-2" href="">New Collection</a>
-      <a class="block w-fit mb-2" href="">All Products</a>
-      <a class="block w-fit mb-2" href="">Discounted Products</a>
+      <a class="block w-fit mb-2" href="/shop/new">New Collection</a>
+      <a class="block w-fit mb-2" href="/shop">All Products</a>
+      <a class="block w-fit mb-2" href="/shop/Discounted">Discounted Products</a>
     </div>
     <div class="mt-32">
       <a class="block w-fit mb-2" href="">Filter by :</a>
@@ -52,15 +52,17 @@
               </div>
             <% } %>
           </div>
-          <div class="flex justify-between items-center px-4 py-4">
-            <div>
-              <h3 class="font-semibold text-lg"><%= product.name %></h3>
-              <h4 class="text-gray-600"><%= product.price %></h4>
-            </div>
-            <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white shadow-md" href="/addtocart/<%= product._id %>">
-              <i class="ri-add-line"></i>
-            </a>
-          </div>
+          <div class="max-w-sm  rounded-xl shadow-md overflow-hidden">
+          <div class="p-5 bg-peach-100">
+            <h3 class="text-lg font-semibold text-gray-800"><%=product.name%></h3>
+           <h4 class="text-gray-600 mt-1">₹ <%=product.price%></h4>
+           <div class="flex gap-2 ">
+              <a href="/addtocart/<%=product._id%>"  class="mt-4 bg-black text-white px-2  rounded hover:bg-gray-800 transition">Add to Cart </a>
+              <a href="/shop/order/<%=product._id%>" class="mt-4 bg-black text-white px-2 rounded hover:bg-gray-800 transition">Buy Now</a>
+           </div>
+        </div>
+  </div>
+
         </div>
       <% }); %>
     </div>

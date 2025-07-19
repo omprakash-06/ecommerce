@@ -23,7 +23,51 @@ router.get("/shop", isLoggedin, async (req, res) => {
         error: req.flash("error")
     });
 });
+//fiter by newest
+router.get('/shop/new',isLoggedin, async (req, res) => {
+  try {
+    const products = await productModel.find().sort({ createdAt: -1 }); // newest first
 
+    res.render('shop', {
+      products,
+      user: req.user,
+      success: req.flash('success'),
+      error: req.flash('error'),
+      sortby: 'newest',
+      availability: '',
+      discount: '',
+    });
+  } catch (err) {
+    console.error(err);
+    req.flash('error', 'Something went wrong');
+    res.redirect('/shop');
+  }
+});
+//filter by discount
+router.get('/shop/Discounted',isLoggedin,async(req,res)=>{
+   try {
+    const products = await productModel.find().sort("discount");
+    res.render('shop', {
+      products,
+      user: req.user,
+      success: req.flash('success'),
+      error: req.flash('error'),
+      sortby: 'Discounted',
+      availability: '',
+      discount: products.discount,
+    });
+   } 
+   catch (err) {
+    console.error(err);
+    req.flash('error', 'Something went wrong');
+    res.redirect('/shop');
+   }
+});
+//order page
+router.get('/shop/order/:id',isLoggedin,async(req,res)=>{
+    const product = await productModel.findById(req.params.id);
+    res.render('order',{product,user:req.user});
+})
 // Add to cart
 router.get("/addtocart/:id", isLoggedin, async (req, res) => {
     try {
