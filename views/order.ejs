@@ -11,8 +11,9 @@
     <h1 class="text-2xl font-bold mb-4">Buy Now</h1>
 
     <!-- Product Info -->
-    <div class="mb-4">
-       Product:<input name="productName" value="<%=product.name%>"class="text-xl font-semibold border-none">
+    <div class="mb-4 w-full ">
+      <img class=" w-full h-60 object-cover " src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="" srcset="">
+       Product:<input  name="productName" value="<%=product.name%>"class="text-xl font-semibold border-none">
        <p class="text-gray-700">Price: ₹ <span id="Price"><%=product.price%></span></p>
        <p class="text-gray-700">Discount: ₹ <span id="Discount"><%=product.discount%></span></p>
        <p class="text-gray-700">platform fee: ₹ <span id="fee"><%=product.fee%></span></p>

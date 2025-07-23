@@ -46,17 +46,18 @@ router.get("/order/history", async(req, res)=>{
 });
 
 router.post("/order/history", async(req, res)=>{
-    const { productName,quantity,totalPrice,email } = req.body;
+    const { productName,quantity,totalPrice,email,_id } = req.body;
     const newOrder = await orderModel.create ({
     email,
     productName,
     quantity,
     totalPrice,
+    _id,
   });
 
   await newOrder.save();
-  res.send('Order Placed Successfully');
-   });
+    res.send("order placed sucessfully");
+});
 
 
 module.exports = router;
